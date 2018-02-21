@@ -1,10 +1,11 @@
 import React from 'react'
-import {Input} from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
+import { Input, Menu, Dropdown, Icon } from 'semantic-ui-react'
+import Hamburger from '../hamburger'
 
 const InputField = () => (
-    <div style={{ display: 'flex', width: '100%', padding: 10, zIndex: 100 }}>
-        <Input icon='search' placeholder='Search' style={{ flex: 1 }} />
+    <div style={{ display: 'flex', padding: 10, zIndex: 100 }}>
+        <Input fluid size='small ' icon='search' placeholder='Search' actionPosition='left'
+        style={{ flex: 1 }} action={<Hamburger />} />
     </div>
 )
 export default InputField 
