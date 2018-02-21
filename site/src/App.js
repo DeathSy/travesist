@@ -1,13 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Input from './components/input'
-import Here from './components/here'
+import Map from '../src/components/map'
 
 export default () => (
   <Router>
     <div>
-      <Route exect path='/' component={Here} />
+      <Route exect path='/' component={Map} />
     </div>
   </Router>
 )
