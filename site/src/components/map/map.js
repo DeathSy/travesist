@@ -1,28 +1,40 @@
 import React from 'react';
 
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
 
 
-
-export class MapContainer extends React.Component {
+export default class MapContainer extends React.Component {
+  
     render() {
+      const MapWithAMarker = withScriptjs(withGoogleMap(props =>
+        <GoogleMap
+          defaultZoom={15}
+          defaultCenter={{ lat: this.props.latitude, lng: this.props.longitude }}
+        >
+          <Marker
+            position={{ lat: this.props.latitude, lng: this.props.longitude }}
+          />
+        </GoogleMap>
+      ));
+      
+      
         return (
-          <Map google={this.props.google} zoom={15}
-          initialCenter={{
-            lat: 13.649737, 
-            lng: 100.492537
-          }}
-          onClick={this.onMapClicked}>
-          <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
-          </Map>
+        <MapWithAMarker
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmGxDWP0R4a5mlRQ4NCvKbysZaatGmx7U&v=3.exp&libraries=geometry,drawing,places"
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `650px` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+      />
         );
+        
       }
     }
-     
-    export default GoogleApiWrapper({
-      apiKey: "AIzaSyCqERKvN7hu3CR7eKuOeO2sKzmFj9FPNZ8"
-    })(MapContainer)
+
 
 
 
